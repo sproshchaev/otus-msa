@@ -1,0 +1,20 @@
+<configuration>
+
+    <!-- Уровень логирования для корневого логгера -->
+    <root level="INFO">
+        <!-- Вывод в консоль -->
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <!-- Консольный аппендер с настройкой формата -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- Примеры уровней логирования для пакетов -->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="com.prosoft" level="DEBUG" />
+</configuration>

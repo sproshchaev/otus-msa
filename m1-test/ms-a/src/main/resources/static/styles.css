@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    flex-direction: column; /* Вертикальная ориентация */
+    align-items: center; /* Центрирование по горизонтали */
+    height: 100vh; /* Полная высота экрана */
+    margin: 0; /* Убрать отступы */
+    text-align: center; /* Центрирование текста */
+}
+
+h1 {
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.form-container {
+    display: flex; /* Гибкое выравнивание элементов */
+    justify-content: center; /* Центрирование по горизонтали */
+    margin-top: 20px; /* Отступ сверху от заголовка */
+}
+
+input {
+    margin-right: 10px; /* Отступ справа для поля ввода */
+    padding: 10px; /* Поля для ввода */
+    width: 300px; /* Фиксированная ширина поля ввода */
+}
+
+button {
+    margin: 0 5px; /* Отступы вокруг кнопок */
+    padding: 10px 20px; /* Поля для кнопок */
+}

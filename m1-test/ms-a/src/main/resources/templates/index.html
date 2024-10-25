@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Text Transformer Service</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
 <h1>Text Transformer Service</h1>
-<form action="#" method="post" th:action="@{/toUpperCase}" th:object="${text}">
-    <input type="text" name="text" th:value="${text}" placeholder="Введите текст"/>
-    <button type="submit" formaction="/toUpperCase">UpperCase</button>
-    <button type="submit" formaction="/toLowerCase">LowerCase</button>
+<form action="#" method="post">
+    <div class="form-container">
+        <input type="text" name="text" th:value="${text}" placeholder="Введите текст" required/>
+        <button type="submit" formaction="/toUpperCase">UpperCase</button>
+        <button type="submit" formaction="/toLowerCase">LowerCase</button>
+    </div>
 </form>
 </body>
 </html>
