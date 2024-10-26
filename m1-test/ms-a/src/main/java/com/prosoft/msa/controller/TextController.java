@@ -1,6 +1,7 @@
 package com.prosoft.msa.controller;
 
-import com.prosoft.msa.service.TextTransformationService;
+import com.prosoft.msa.service.ToLowerCaseService;
+import com.prosoft.msa.service.ToUpperCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TextController {
 
-    private final TextTransformationService toUpperCaseService;
-    private final TextTransformationService toLowerCaseService;
+    private final ToUpperCaseService toUpperCaseService;
+    private final ToLowerCaseService toLowerCaseService;
 
     private static final String INDEX_VIEW = "index";
     private static final String TEXT_ATTRIBUTE = "text";
 
     @Autowired
-    public TextController(TextTransformationService toUpperCaseService, TextTransformationService toLowerCaseService) {
+    public TextController(ToUpperCaseService toUpperCaseService, ToLowerCaseService toLowerCaseService) {
         this.toUpperCaseService = toUpperCaseService;
         this.toLowerCaseService = toLowerCaseService;
     }
