@@ -1,2 +1,7 @@
 server:
   port: 8080
+service:
+  uppercase:
+     url: http://localhost:8081/transform
+  lowercase:
+     url: http://localhost:8082/transform

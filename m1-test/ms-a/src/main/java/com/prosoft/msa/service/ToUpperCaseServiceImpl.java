@@ -2,6 +2,7 @@ package com.prosoft.msa.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,6 +17,9 @@ public class ToUpperCaseServiceImpl implements ToUpperCaseService {
 
     private final RestTemplate restTemplate;
 
+    @Value("${service.uppercase.url}")
+    private String upperCaseUrl;
+
     @Autowired
     public ToUpperCaseServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -28,7 +32,7 @@ public class ToUpperCaseServiceImpl implements ToUpperCaseService {
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         return restTemplate.exchange(
-                "http://localhost:8081/transform",
+                upperCaseUrl,
                 HttpMethod.POST,
                 new HttpEntity<>(text, headers),
                 String.class
