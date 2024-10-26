@@ -1,4 +1,4 @@
-package com.prosoft.config;
+package com.prosoft.msa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

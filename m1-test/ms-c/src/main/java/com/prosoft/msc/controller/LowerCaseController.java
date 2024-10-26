@@ -1,6 +1,6 @@
-package com.prosoft.controller;
+package com.prosoft.msc.controller;
 
-import com.prosoft.service.TextTransformationService;
+import com.prosoft.msc.service.TextTransformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

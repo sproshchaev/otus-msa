@@ -1,4 +1,4 @@
-package com.prosoft;
+package com.prosoft.msb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

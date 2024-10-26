@@ -1,6 +1,6 @@
-package com.prosoft.controller;
+package com.prosoft.msa.controller;
 
-import com.prosoft.service.TextTransformationService;
+import com.prosoft.msa.service.TextTransformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

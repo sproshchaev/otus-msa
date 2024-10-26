@@ -1,4 +1,4 @@
-package com.prosoft.service;
+package com.prosoft.msa.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,26 +9,25 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-
 @Slf4j
 @Service
-public class ToUpperCaseService implements TextTransformationService {
+public class ToLowerCaseService implements TextTransformationService {
 
     private final RestTemplate restTemplate;
 
     @Autowired
-    public ToUpperCaseService(RestTemplate restTemplate) {
+    public ToLowerCaseService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     @Override
     public String transform(String text) {
-        log.info("Sending text for UpperCase transformation: {}", text);
+        log.info("Sending text for LowerCase transformation: {}", text);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         return restTemplate.exchange(
-                "http://localhost:8081/transform",
+                "http://localhost:8082/transform",
                 HttpMethod.POST,
                 new HttpEntity<>(text, headers),
                 String.class

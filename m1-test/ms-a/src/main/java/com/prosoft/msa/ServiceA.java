@@ -1,11 +1,14 @@
-package com.prosoft;
+package com.prosoft.msa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * ServiceA
+ */
 @SpringBootApplication
-public class ServiceC {
+public class ServiceA {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceC.class, args);
+        SpringApplication.run(ServiceA.class, args);
     }
 }
