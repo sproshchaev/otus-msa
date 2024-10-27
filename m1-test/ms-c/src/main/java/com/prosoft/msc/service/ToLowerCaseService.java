@@ -15,5 +15,4 @@ public class ToLowerCaseService implements TextTransformationService {
         return text.toLowerCase();
     }
 
-
 }
