@@ -34,3 +34,5 @@ OWASP ZAP
 10 Исследовательское тестирование
 
 ### References 
+
+`1.` The Practical Test Pyramid https://martinfowler.com/articles/practical-test-pyramid.html 
