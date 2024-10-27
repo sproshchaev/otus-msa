@@ -1,4 +1,5 @@
 # otus-msa
+<img src="https://i.postimg.cc/9FHZfC2j/Microservices.png" alt="Microservices"/>  
 
 Pre-Deployment Тесты
 --------------------
