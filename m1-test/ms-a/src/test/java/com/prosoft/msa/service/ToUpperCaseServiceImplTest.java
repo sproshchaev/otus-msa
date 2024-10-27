@@ -17,6 +17,10 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * ToUpperCaseServiceImplTest — это юнит-тест, поскольку он проверяет только один класс ToUpperCaseServiceImpl изолированно,
+ * не поднимая весь контекст Spring. Для мока внешнего HTTP-запроса используется RestTemplate.
+ */
 @SpringBootTest
 class ToUpperCaseServiceImplTest {
 
