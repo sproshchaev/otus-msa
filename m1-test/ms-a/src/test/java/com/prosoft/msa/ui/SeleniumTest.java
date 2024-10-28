@@ -10,6 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -26,7 +29,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure".
  * То перейти в настройки Конфиденциальность и безопасность и нажать "Все равно разрешить" для "Приложение chromedriver
  * заблокировано, так как его автор не является установленным разработчиком".
- * 2) JUnit пропустит классы с @Disabled при запуске тестов.
+ * 2) Если в Win тест зависает, то через проводник на chromedriver.exe в свойствах необходимо отметить чек-бокс, разрешающий запуск
+ * 3) JUnit пропустит классы с @Disabled при запуске тестов.
  */
 @Disabled
 class SeleniumTest {
@@ -40,13 +44,13 @@ class SeleniumTest {
     private WebDriver driver = new ChromeDriver();
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws URISyntaxException {
         String osName = System.getProperty("os.name").toLowerCase();
         String pathChromeDriver;
         if (osName.contains("mac")) {
             pathChromeDriver = ServiceA.class.getClassLoader().getResource("chromedriver/macos/chromedriver").getPath();
         } else {
-            pathChromeDriver = ServiceA.class.getClassLoader().getResource("chromedriver/win/chromedriver").getPath();
+            pathChromeDriver = Paths.get(ServiceA.class.getClassLoader().getResource("chromedriver/win64/chromedriver.exe").toURI()).toString();
         }
         System.setProperty("webdriver.chrome.driver", pathChromeDriver);
         driver.get("http://localhost:8080");
