@@ -7,10 +7,12 @@ Contract.make {
 
     request {
         url "/transform"
-        method GET()
+        method POST()
+        body("hello!")
     }
 
     response {
         status OK()
+        body "HELLO!"
     }
 }
