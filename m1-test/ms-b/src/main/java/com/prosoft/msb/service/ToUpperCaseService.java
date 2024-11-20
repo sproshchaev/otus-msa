@@ -9,6 +9,10 @@ public class ToUpperCaseService implements TextTransformationService {
 
     @Override
     public String transform(String text) {
+        if (text == null) {
+            log.warn("ms-b: Received null text for transformation");
+            return null;
+        }
         log.info("ms-b: Received text for transformation: {}", text);
         String result = text.toUpperCase();
         log.info("ms-b: Transformed text to uppercase: {}", result);
