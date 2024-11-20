@@ -7,17 +7,19 @@
 [![PITest](https://img.shields.io/badge/PITest-FFFFFF??style=for-the-badge&logo=PITest&logoColor=3B84C3)](https://pitest.org/)
 # m1-test  
 ### Тестирование микросервисов:  
-#### Unit-тестирование
+
+#### 1. Unit-тестирование:
 [ToUpperCaseServiceImplTest](https://github.com/sproshchaev/otus-msa/blob/base/m1-test/ms-a/src/test/java/com/prosoft/msa/service/ToUpperCaseServiceImplTest.java)
-#### Интеграционное тестирование  
+
+#### 2. Интеграционное тестирование:   
 [TextControllerIntegrationTest](https://github.com/sproshchaev/otus-msa/blob/base/m1-test/ms-a/src/test/java/com/prosoft/msa/controller/TextControllerIntegrationTest.java)  
 
-#### Контрактное тестирование
+#### 3. Контрактное тестирование: 
 [BaseClass](https://github.com/sproshchaev/otus-msa/blob/base/m1-test/ms-b/src/test/java/com/prosoft/msb/contract/BaseClass.java)  
 [ContractIntegrationTest](https://github.com/sproshchaev/otus-msa/blob/base/m1-test/ms-a/src/test/java/com/prosoft/msa/ContractIntegrationTest.java)  
 
-#### UI тестирование 
+#### 4. UI тестирование:  
 [SeleniumTest](https://github.com/sproshchaev/otus-msa/blob/base/m1-test/ms-a/src/test/java/com/prosoft/msa/ui/SeleniumTest.java)  
 
-#### Мутационное тестирование 
+#### 5. Мутационное тестирование: 
 [ToLowerCaseServiceTest](https://github.com/sproshchaev/otus-msa/blob/base/m1-test/ms-c/src/test/java/com/prosoft/msc/service/ToLowerCaseServiceTest.java)
