@@ -1,24 +1,36 @@
-package com.prosoft;
+package com.prosoft.inline;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.concurrent.TimeUnit;
 
 /**
- * Использование Map для inline cache (кеширование результатов)
+ * Использование Caffeine для inline cache (кэширование результатов)
  */
-public class InlineCacheExample {
+public class CaffeineCacheExample {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InlineCacheExample.class);
-    private Map<Integer, String> cache = new HashMap<>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(CaffeineCacheExample.class);
+
+    /** Время жизни записи в Cache */
+    private static final int CACHE_EXPIRATION_MINUTES = 10;
+    /** Максимальное количество записей в Cache */
+    private static final int CACHE_MAXIMUM_SIZE = 100;
+
+    /** Инициализация кэша с Caffeine в поле класса */
+    private final Cache<Integer, String> cache = Caffeine.newBuilder()
+            .expireAfterWrite(CACHE_EXPIRATION_MINUTES, TimeUnit.MINUTES)
+            .maximumSize(CACHE_MAXIMUM_SIZE)
+            .build();
 
     public static void main(String[] args) {
-        InlineCacheExample example = new InlineCacheExample();
-        LOGGER.info("Результат: {}\n", example.getData(1));
-        LOGGER.info("Результат: {}", example.getData(1));
+        CaffeineCacheExample example = new CaffeineCacheExample();
+        String result = example.getData(1);
+        LOGGER.info("Результат: {}\n", result);
+        result = example.getData(1);
+        LOGGER.info("Результат: {}", result);
     }
 
     /**
@@ -35,15 +47,15 @@ public class InlineCacheExample {
     public String getData(int id) {
         long startTime = System.currentTimeMillis();
         LOGGER.debug("Начало запроса данных для ID {}", id);
-        if (cache.containsKey(id)) {
+        try {
+            String result = cache.get(id, this::fetchDataFromDatabase);
             long endTime = System.currentTimeMillis();
-            LOGGER.info("Данные из кэша получены для ID {} за {} мс", id, (endTime - startTime));            return cache.get(id);
+            LOGGER.info("Данные получены для ID {} за {} мс", id, (endTime - startTime));
+            return result;
+        } catch (Exception e) {
+            LOGGER.error("Ошибка при получении данных для ID {}", id, e);
+            return null;
         }
-        String result = fetchDataFromDatabase(id);
-        cache.put(id, result);
-        long endTime = System.currentTimeMillis();
-        LOGGER.info("Данные из базы получены для ID {} за {} мс", id, (endTime - startTime));
-        return result;
     }
 
     /**
@@ -58,12 +70,15 @@ public class InlineCacheExample {
      * @return строка с данными, связанными с указанным ID
      */
     private String fetchDataFromDatabase(int id) {
+        LOGGER.debug("Данные отсутствуют в кэше. Выполняется загрузка из базы данных для ID {}", id);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1000); // Эмуляция долгой операции
         } catch (InterruptedException e) {
-            LOGGER.error("Операция была прервана", e);
+            LOGGER.error("Операция была прервана для ID {}", id, e);
             Thread.currentThread().interrupt();
         }
-        return "Data for ID " + id;
+        String result = "Data for ID " + id;
+        LOGGER.debug("Данные успешно загружены для ID {}: {}", id, result);
+        return result;
     }
 }
