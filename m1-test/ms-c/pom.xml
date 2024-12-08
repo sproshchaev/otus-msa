@@ -50,13 +50,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- плагин pitest-maven -->
+            <!-- Плагин PIT для мутационных тестов -->
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.17.1</version>
                 <dependencies>
-                    <!-- дополнительная зависимость для junit5 -->
+                    <!-- Плагин для поддержки JUnit 5 в PIT -->
                     <dependency>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-junit5-plugin</artifactId>
@@ -64,11 +64,11 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <!-- пакет классов для мутационного тестирования -->
+                    <!-- Конфигурация для выполнения мутационных тестов только на классах в пакете com.prosoft.msc.service -->
                     <targetClasses>
                         <param>com.prosoft.msc.service.*</param>
                     </targetClasses>
-                    <!-- пакет классов с тестами для мутационного тестирования -->
+                    <!-- Указываем, что тесты должны быть в тех же пакетах, что и целевые классы -->
                     <targetTests>
                         <param>com.prosoft.msc.service.*</param>
                     </targetTests>
