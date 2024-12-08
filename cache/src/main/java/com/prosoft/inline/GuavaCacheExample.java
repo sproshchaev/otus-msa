@@ -8,6 +8,14 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Пример использования Guava Cache для inline cache (кэширование результатов).
+ * <p>
+ * В данном примере используется Guava Cache для кэширования данных, с ограничением по максимальному
+ * количеству записей и временем жизни записи. Если данные отсутствуют в кэше, они извлекаются из
+ * базы данных (или эмулируются с помощью метода) и сохраняются в кэш.
+ * </p>
+ */
 public class GuavaCacheExample {
     private static final Logger LOGGER = LoggerFactory.getLogger(GuavaCacheExample.class);
 
