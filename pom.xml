@@ -14,6 +14,9 @@
         <module>m1-test/ms-b</module>
         <module>m1-test/ms-c</module>
         <module>cache</module>
+        <module>keycloak-jwt</module>
+        <module>keycloak-jwt/ms-server</module>
+        <module>keycloak-jwt/ms-client</module>
     </modules>
 
     <properties>
