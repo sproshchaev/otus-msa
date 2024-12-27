@@ -32,7 +32,8 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:23.0.6
     container_name: keycloak
-    command: start
+    # command: start       # production mode
+    command: start-dev # development mode
     environment:
       KC_HOSTNAME: localhost
       KC_HOSTNAME_PORT: 8080
