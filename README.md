@@ -41,3 +41,5 @@ OWASP ZAP
 `2.` Postman: POST, localhost:8082/transform, Headers: Content-Type application/json, Body raw JSON "Hello World"  
 
 `3.` REST Assured https://testit.software/blog/post/rest-assured-i-postman-dva-podhoda-k-testirovaniyu-api  
+
+![pic](schema.svg)
