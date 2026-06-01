@@ -1,8 +1,7 @@
-version: '3.9'
-
 services:
   postgres:
     image: postgis/postgis:15-3.4-alpine
+    platform: linux/amd64
     container_name: postgres-15
     environment:
       POSTGRES_DB: otus-db
