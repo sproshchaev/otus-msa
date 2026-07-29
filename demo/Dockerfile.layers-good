@@ -1,0 +1,7 @@
+# Слайды 18, 22 — объединение шагов через && в один слой.
+# Файл создаётся и удаляется внутри одного RUN, слой остаётся маленьким.
+FROM alpine:3.20
+
+RUN dd if=/dev/zero of=/bigfile bs=1M count=50 && rm -f /bigfile
+
+CMD ["echo", "layers-good"]

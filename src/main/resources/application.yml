@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: hello-service
+
+server:
+  port: ${SERVER_PORT:8080}
+
+hello:
+  greeting: ${GREETING:Hello}
+  data-dir: ${DATA_DIR:/data}
+
+logging:
+  level:
+    ru.otus.hello: INFO

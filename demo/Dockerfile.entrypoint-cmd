@@ -1,0 +1,9 @@
+# Слайд 20 — ENTRYPOINT + CMD совместно.
+# ENTRYPOINT задаёт неизменяемую программу (ls),
+# CMD задаёт аргументы по умолчанию, которые можно переопределить:
+#   docker run --rm demo-both          -> ls /usr /var
+#   docker run --rm demo-both /etc     -> ls /etc
+FROM alpine:3.20
+
+ENTRYPOINT ["ls"]
+CMD ["/usr", "/var"]

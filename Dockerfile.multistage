@@ -1,0 +1,29 @@
+# ---------- Этап 1: сборка ----------
+FROM maven:3.9-eclipse-temurin-21 AS build
+
+WORKDIR /build
+
+# Сначала только pom.xml — слой с зависимостями попадёт в кэш
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+# Затем исходники — этот слой пересобирается при каждом изменении кода
+COPY src ./src
+RUN mvn clean package -DskipTests -B
+
+# ---------- Этап 2: запуск ----------
+FROM eclipse-temurin:21-jre-alpine
+
+LABEL name="hello-service"
+
+WORKDIR /app
+
+ENV GREETING="Hello"
+ENV DATA_DIR="/data"
+
+# Забираем из первого этапа только готовый jar
+COPY --from=build /build/target/hello-service.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

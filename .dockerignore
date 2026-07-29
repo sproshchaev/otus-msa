@@ -1,0 +1,8 @@
+.git
+.gitignore
+.idea
+*.iml
+demo/
+README.md
+target/*
+!target/hello-service.jar
